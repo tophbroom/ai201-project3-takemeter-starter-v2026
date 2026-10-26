@@ -51,61 +51,76 @@ whether you hit them:
 
 ---
 
-## 1.
+## 1. Overall accuracy is at least 0.65
 
-<!-- Your criterion. It must name a number. -->
+Accuracy on the held-out test split is at least 0.65, on each of the three
+seeds.
 
-
-
-**Why this target:**
-
-
-
----
-
-## 2.
-
-<!-- Your criterion. -->
-
-
-
-**Why this target:**
+**Why this target:** With three labels a random guesser gets about 33%, and
+always guessing the biggest label (probably `reaction`) could get 40–50% on
+`c/games`. 0.65 is clearly above both, and still reachable with only about 140
+training examples and a fuzzy `analysis` / `hot_take` boundary.
 
 
 
 ---
 
-## 3.
+## 2. Every label has an F1 of at least 0.55
 
-<!-- Your criterion. -->
+Each of `analysis`, `hot_take` and `reaction` has an F1 of at least 0.55 on the
+held-out test split, on each of the three seeds.
 
-
-
-**Why this target:**
-
-
-
----
-
-## 4.
-
-<!-- Your criterion. -->
-
-
-
-**Why this target:**
+**Why this target:** It's lower than the accuracy target on purpose. `analysis`
+will probably be my thinnest label, since few `c/games` comments cite anything
+checkable, so only a handful will land in a test split of about 30 posts and
+one wrong post moves its F1 a lot. A floor of 0.55 still stops the model from
+ignoring a label entirely.
 
 
 
 ---
 
-## 5.
+## 3. No label is above 60% or below 15% of labels.csv
 
-<!-- Your criterion. -->
+In `labels.csv`, each label makes up between 15% and 60% of the rows.
+
+**Why this target:** The assignment's cap is 70%, but I expect `reaction` to
+dominate this community, so I set a stricter 60%. The 15% floor is there
+because a label with under about 30 of 200 examples puts fewer than 5 in the
+test split, which makes its F1 meaningless.
 
 
 
-**Why this target:**
+---
+
+## 4. I agree with my own earlier labels on at least 14 of 20 posts
+
+I re-label 20 randomly chosen posts from `labels.csv` at least a day later,
+using only the written definitions in `label_definitions.txt` and not looking
+at my first labels. At least 14 of 20 (70%) must match.
+
+**Why this target:** The model can only learn a boundary I apply consistently.
+My `analysis` vs `hot_take` rule depends on whether a detail is what the claim
+"rests on," which is a judgment call, so I expect some drift. 70% is lenient
+enough to allow for that, and low enough agreement would mean my labels, not
+the model, are the problem. This is only a check against myself, not a second
+person.
+
+
+
+---
+
+## 5. Confident predictions are right at least 80% of the time
+
+Among held-out test predictions where the model's top-label probability is at
+least 0.80, at least 80% are correct, with at least 10 such predictions on each
+seed.
+
+**Why this target:** A confidence score is only useful if the confident
+predictions are more reliable than the unsure ones. 0.80 sits above my
+accuracy target of 0.65, so the model has to show that its confidence means
+something. I require at least 10 predictions because a test split of about 30
+posts could leave only a few confident ones, and 80% of 4 posts isn't a result.
 
 
 

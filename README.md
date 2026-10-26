@@ -46,6 +46,20 @@ TakeMeter sorts comments from `c/games` on lemmy.world, a public gaming
 community with no login needed to read it. Each comment gets one of three
 labels: `analysis`, `hot_take`, or `reaction`.
 
+**What I noticed reading 40 comments** (a random sample of the newest comments,
+before I designed any labels). I first tried Hacker News, then switched to
+`c/games`; these notes are from `c/games`.
+
+1. **Some comments back a point with something checkable, most don't.** A few
+   name a number, a date, a quote or a link (for example, a comment on Tencent's
+   40% stake in Epic, or one quoting a project's AI policy). Most just assert.
+2. **Many comments are strong opinions about a company or a game with nothing
+   behind them** ("PvP sucks ass," "Valve doesn't give a shit either").
+3. **Many are short personal reactions or experience** ("I'm having a blast!",
+   "Oh wow. Didn't realize it had a phone port").
+4. **Jokes, sarcasm and replies are common, and some only make sense inside
+   their thread** ("What's the first supposed to be, Adolf Toastler?").
+
 
 ---
 
@@ -59,23 +73,26 @@ labels: `analysis`, `hot_take`, or `reaction`.
 
 ### `analysis`
 
-**Definition:** A point supported by a specific, checkable detail (a number,
-date, named source, quote, or concrete mechanic) that the claim rests on.
-Background facts and numbers about the poster's own experience do not count.
+**Definition:** A point supported by a specific detail the poster actually
+gives as support (a number, date, named source, quote, link, or described
+mechanic) that the claim rests on. A fact that is merely asserted with no source
+or number, background facts, and numbers about the poster's own experience do
+not count.
 
 **Example 1:**
 > Tencent bought 40% afaik, and they had several rounds since then. Maybe Sweeney owns a *controlling* portion with a privileged share class, but I would be surprised if he owned a majority. …You are not wrong though. I guess this wouldn't be happening if he didn't have absolute control.
 > https://lemmy.world/comment/26522765
 
 **Example 2:**
-> \> Every discussion, issue, and pull request is read and reviewed by humans (and sometimes machines, too). It is a boundary point at which people interact with each other and the work done. It is rude and disrespectful to approach this boundary with low-effort, unqualified work, since it puts the burden of validation on the maintainer. https://opengoal.dev/docs/contributing/ai_policy Based
-> https://kbin.earth/m/games@lemmy.world/t/3320527/-/comment/15169725
+> This is not big daddy N loosing a bunch of money, this is a market correction. People purchased shares 2 days ago expecting an announcement and the price has returned to normal https://finance.yahoo.com/quote/NTDOY/?guccounter=1 The shares were at 15.56 and are now at 14.81. It is still up 2% over the past week, 6% over the last 6 months, an 8.5% over the last year, and a whopping 51% over the last 5 years.
+> https://lemmy.world/comment/14539448
 
 ### `hot_take`
 
 **Definition:** A confident claim about a game, company, or the industry that
 someone could disagree with, with no support offered. Rankings and comparisons
-count, even when phrased from experience.
+count, even when phrased from experience, and so do jokes or sarcasm that imply
+a claim about the world.
 
 **Example 1:**
 > PvP sucks ass and I never ever want to go into PvP. So many games try to force people into PvP because so few people want to play PvP but those that do froth at the mouth for it so they need to force people into the meat grinder to make them happy. Fuck PvP.
@@ -87,9 +104,10 @@ count, even when phrased from experience.
 
 ### `reaction`
 
-**Definition:** The poster's own feeling, experience, plan, or question,
-without an argued claim. Short replies that only make sense inside their thread
-go here.
+**Definition:** The poster's own feeling, experience, plan, or question, or a
+pure joke that implies no claim, without an argued claim. Short replies that
+only make sense inside their thread, and recaps or quotes with no claim of
+their own, go here.
 
 **Example 1:**
 > Huge recommend to bump that 0 up, yeah. I'm having a blast!
@@ -106,15 +124,22 @@ go here.
 
 **The decision rule I used every time:**
 
-1. If a specific, checkable detail is what the claim rests on, it's `analysis`,
-   even if the tone is heated or the fact is hedged ("afaik"). A detail that is
-   only background, or a number about the poster's own experience, does not
-   count.
+1. If the poster gives a specific detail (a number, date, named source, quote,
+   link, or described mechanic) as support and the claim rests on it, it's
+   `analysis`, even if the tone is heated or the fact is hedged ("afaik"). A
+   fact that is only asserted, with nothing to point to, is not `analysis`.
+   Background facts and numbers about the poster's own experience or setup do
+   not count either.
 2. If it only says what *I* felt, did, or plan to do, it's a `reaction`. If it
    asserts something about the world that another person could argue with,
    it's a `hot_take`. Rankings and comparisons are `hot_take`.
-3. Questions and short replies that only make sense in their thread are
-   `reaction`.
+3. A joke or sarcasm that implies a claim about the world is a `hot_take`. A
+   pure joke with no claim is a `reaction`.
+4. Questions, short replies that only make sense in their thread, and recaps or
+   quotes with no claim of the poster's own are `reaction`.
+
+*These rules were tightened once, after a second Claude labeled 20 posts and
+disagreed with me on 6 (see How I Used AI).*
 
 
 
@@ -125,19 +150,37 @@ go here.
 <!-- Where you collected from, how you labelled, your counts, and three hard
      cases. -->
 
-**Where the posts came from:**
+**Where the posts came from:** Public comments from `c/games` on lemmy.world,
+pulled through Lemmy's public API (no login). I used four sorts (Top, Hot, New,
+Controversial), kept at most 3–4 comments per thread (200 threads in the final
+file),
+and kept whole comments between 40 and 1,000 characters. I dropped deleted and
+removed comments, bot accounts, image-only comments, and comments tagged as
+spoilers. Source links, dates and thread titles are in `labels_sources.csv`.
 
-**How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
-Say so plainly — the disclosure is required, not penalised. -->
+**How I labelled them:** Claude, an AI assistant, pre-labelled every one of the
+259 rows against my written definitions. I did not label any posts cold, and I
+did not read all 259 rows myself. What I did review: the definitions and
+decision rules, the 46 rows Claude marked as hard or relabelled, via a second,
+independent Claude chat that labelled them without seeing Claude's labels
+(it matched on 37 of 46), and I approved each of the 6 resulting changes. Every
+row's `note` says `ai-prelabeled`, and 36 rows carry a `hard:` note naming the
+two labels they sat between. Claude read only the first ~350–400 characters of
+longer comments before labelling them.
+
+Two things about the sample: I added rows after the first pass to keep
+`analysis` above my own 15% floor, and I found many of them by searching for
+numbers, links and quotes. The label mix is therefore not the natural mix of
+`c/games`, which is probably more `hot_take`-heavy.
 
 **Counts per label:**
 
 | Label | Count | Share |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| `hot_take` | 127 | 49.0% |
+| `reaction` | 89 | 34.4% |
+| `analysis` | 43 | 16.6% |
+| **Total** | 259 | 100% |
 
 **Three hard cases**
 
@@ -145,25 +188,25 @@ Say so plainly — the disclosure is required, not penalised. -->
      been, and what you chose. These are worth more than the easy 190. -->
 
 **1.**
-> *The post:*
+> *The post:* "Disney took the popular comedian Jimmy Kimmel off-air after he joked about it," No. Kimmel ragged on trump and maga but did not joke about kirk. Stop the gaslighting. (https://piefed.social/comment/9665324)
 >
-> *Could have been:*
+> *Could have been:* `analysis` or `hot_take`
 >
-> *I chose, because:*
+> *I chose:* `hot_take`, because it states what Kimmel did and didn't say but gives no source, quote or number to point to. It was `analysis` at first, because the fact is checkable. I tightened the rule to require a detail actually given as support, and this moved.
 
 **2.**
-> *The post:*
+> *The post:* I believe it's still better than renting games. Here I can just backup my saves and move elsewhere (other provider or on real hardware if I want). I've been playing like 100h per year, so I thing spending 2K$ in hardware when I can just spend 40€/month is not worth it for me. (https://lemmy.ml/comment/28527426)
 >
-> *Could have been:*
+> *Could have been:* `hot_take` or `reaction`
 >
-> *I chose, because:*
+> *I chose:* `reaction`, because the numbers (100h a year, 2K$ vs 40€ a month) are about the poster's own use and the conclusion is "not worth it for me." A second Claude labelled it the same way.
 
 **3.**
-> *The post:*
+> *The post:* \>Video Game Plus pointed to its policy of not selling games that only offer digital codes, and as a result, it will not sell the biggest game of 2026. The retailer noted that this isn't a reflection of Rockstar Games or the game itself, but argued that it's part of their goal of preserving physical media. Based (https://pawb.social/comment/22897120)
 >
-> *Could have been:*
+> *Could have been:* `analysis` or `reaction`
 >
-> *I chose, because:*
+> *I chose:* `reaction`, because the poster only quotes an article and adds "Based." The detail is in the quote, not offered as support for a claim of their own. This is also why a similar recap, row 94, ended up `reaction`.
 
 ---
 

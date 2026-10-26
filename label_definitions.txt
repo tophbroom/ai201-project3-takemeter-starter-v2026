@@ -3,6 +3,6 @@
 # Copy these from your README so the baseline is judged on exactly the
 # definitions you wrote. baseline.py reads this file.
 
-analysis: a point supported by a specific, checkable detail (a number, date, named source, quote, or concrete mechanic) that the claim rests on; background facts and numbers about the poster's own experience do not count
-hot_take: a confident claim about a game, company, or the industry that someone could disagree with, with no support offered; rankings and comparisons count
-reaction: the poster's own feeling, experience, plan, or question, without an argued claim
+analysis: a point supported by a specific detail the poster actually gives as support (a number, date, named source, quote, link, or described mechanic) that the claim rests on; a fact that is merely asserted with no source or number, background facts, and numbers about the poster's own experience do not count
+hot_take: a confident claim about a game, company, or the industry that someone could disagree with, with no support offered; rankings and comparisons count, and so do jokes or sarcasm that imply a claim about the world
+reaction: the poster's own feeling, experience, plan, or question, or a pure joke that implies no claim, without an argued claim
