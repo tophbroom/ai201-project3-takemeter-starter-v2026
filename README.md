@@ -42,6 +42,9 @@
 <!-- Your community, and what your classifier sorts posts into. Three or four
      sentences. -->
 
+TakeMeter sorts comments from `c/games` on lemmy.world, a public gaming
+community with no login needed to read it. Each comment gets one of three
+labels: `analysis`, `hot_take`, or `reaction`.
 
 
 ---
@@ -54,33 +57,64 @@
      The decision rule is worth a point on its own and it's the thing most
      people leave out. Every taxonomy has a hardest boundary. Name yours. -->
 
-### `label_one`
+### `analysis`
 
-**Definition:**
-
-**Example 1:**
->
-
-**Example 2:**
->
-
-### `label_two`
-
-**Definition:**
+**Definition:** A point supported by a specific, checkable detail (a number,
+date, named source, quote, or concrete mechanic) that the claim rests on.
+Background facts and numbers about the poster's own experience do not count.
 
 **Example 1:**
->
+> Tencent bought 40% afaik, and they had several rounds since then. Maybe Sweeney owns a *controlling* portion with a privileged share class, but I would be surprised if he owned a majority. …You are not wrong though. I guess this wouldn't be happening if he didn't have absolute control.
+> https://lemmy.world/comment/26522765
 
 **Example 2:**
->
+> \> Every discussion, issue, and pull request is read and reviewed by humans (and sometimes machines, too). It is a boundary point at which people interact with each other and the work done. It is rude and disrespectful to approach this boundary with low-effort, unqualified work, since it puts the burden of validation on the maintainer. https://opengoal.dev/docs/contributing/ai_policy Based
+> https://kbin.earth/m/games@lemmy.world/t/3320527/-/comment/15169725
+
+### `hot_take`
+
+**Definition:** A confident claim about a game, company, or the industry that
+someone could disagree with, with no support offered. Rankings and comparisons
+count, even when phrased from experience.
+
+**Example 1:**
+> PvP sucks ass and I never ever want to go into PvP. So many games try to force people into PvP because so few people want to play PvP but those that do froth at the mouth for it so they need to force people into the meat grinder to make them happy. Fuck PvP.
+> https://lemmy.world/comment/26519828
+
+**Example 2:**
+> Valve doesn't give a shit either
+> https://lemmy.ca/comment/26017055
+
+### `reaction`
+
+**Definition:** The poster's own feeling, experience, plan, or question,
+without an argued claim. Short replies that only make sense inside their thread
+go here.
+
+**Example 1:**
+> Huge recommend to bump that 0 up, yeah. I'm having a blast!
+> https://lemmy.world/comment/26523738
+
+**Example 2:**
+> Oh wow. Didn't realize it had a phone port and it shooks shockingly good
+> https://lemmy.world/comment/26522767
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which two labels:** `analysis` and `hot_take`. A second, close boundary is
+`hot_take` and `reaction`.
 
 **The decision rule I used every time:**
-<!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
-     if the tone is heated." -->
+
+1. If a specific, checkable detail is what the claim rests on, it's `analysis`,
+   even if the tone is heated or the fact is hedged ("afaik"). A detail that is
+   only background, or a number about the poster's own experience, does not
+   count.
+2. If it only says what *I* felt, did, or plan to do, it's a `reaction`. If it
+   asserts something about the world that another person could argue with,
+   it's a `hot_take`. Rankings and comparisons are `hot_take`.
+3. Questions and short replies that only make sense in their thread are
+   `reaction`.
 
 
 
