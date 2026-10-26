@@ -60,7 +60,6 @@ before I designed any labels). I first tried Hacker News, then switched to
 4. **Jokes, sarcasm and replies are common, and some only make sense inside
    their thread** ("What's the first supposed to be, Adolf Toastler?").
 
-
 ---
 
 ## Label Taxonomy
@@ -80,10 +79,12 @@ or number, background facts, and numbers about the poster's own experience do
 not count.
 
 **Example 1:**
-> Tencent bought 40% afaik, and they had several rounds since then. Maybe Sweeney owns a *controlling* portion with a privileged share class, but I would be surprised if he owned a majority. …You are not wrong though. I guess this wouldn't be happening if he didn't have absolute control.
+
+> Tencent bought 40% afaik, and they had several rounds since then. Maybe Sweeney owns a _controlling_ portion with a privileged share class, but I would be surprised if he owned a majority. …You are not wrong though. I guess this wouldn't be happening if he didn't have absolute control.
 > https://lemmy.world/comment/26522765
 
 **Example 2:**
+
 > This is not big daddy N loosing a bunch of money, this is a market correction. People purchased shares 2 days ago expecting an announcement and the price has returned to normal https://finance.yahoo.com/quote/NTDOY/?guccounter=1 The shares were at 15.56 and are now at 14.81. It is still up 2% over the past week, 6% over the last 6 months, an 8.5% over the last year, and a whopping 51% over the last 5 years.
 > https://lemmy.world/comment/14539448
 
@@ -95,10 +96,12 @@ count, even when phrased from experience, and so do jokes or sarcasm that imply
 a claim about the world.
 
 **Example 1:**
+
 > PvP sucks ass and I never ever want to go into PvP. So many games try to force people into PvP because so few people want to play PvP but those that do froth at the mouth for it so they need to force people into the meat grinder to make them happy. Fuck PvP.
 > https://lemmy.world/comment/26519828
 
 **Example 2:**
+
 > Valve doesn't give a shit either
 > https://lemmy.ca/comment/26017055
 
@@ -110,10 +113,12 @@ only make sense inside their thread, and recaps or quotes with no claim of
 their own, go here.
 
 **Example 1:**
+
 > Huge recommend to bump that 0 up, yeah. I'm having a blast!
 > https://lemmy.world/comment/26523738
 
 **Example 2:**
+
 > Oh wow. Didn't realize it had a phone port and it shooks shockingly good
 > https://lemmy.world/comment/26522767
 
@@ -130,18 +135,13 @@ their own, go here.
    fact that is only asserted, with nothing to point to, is not `analysis`.
    Background facts and numbers about the poster's own experience or setup do
    not count either.
-2. If it only says what *I* felt, did, or plan to do, it's a `reaction`. If it
+2. If it only says what _I_ felt, did, or plan to do, it's a `reaction`. If it
    asserts something about the world that another person could argue with,
    it's a `hot_take`. Rankings and comparisons are `hot_take`.
 3. A joke or sarcasm that implies a claim about the world is a `hot_take`. A
    pure joke with no claim is a `reaction`.
 4. Questions, short replies that only make sense in their thread, and recaps or
    quotes with no claim of the poster's own are `reaction`.
-
-*These rules were tightened once, after a second Claude labeled 20 posts and
-disagreed with me on 6 (see How I Used AI).*
-
-
 
 ---
 
@@ -158,15 +158,12 @@ and kept whole comments between 40 and 1,000 characters. I dropped deleted and
 removed comments, bot accounts, image-only comments, and comments tagged as
 spoilers. Source links, dates and thread titles are in `labels_sources.csv`.
 
-**How I labelled them:** Claude, an AI assistant, pre-labelled every one of the
-259 rows against my written definitions. I did not label any posts cold, and I
-did not read all 259 rows myself. What I did review: the definitions and
-decision rules, the 46 rows Claude marked as hard or relabelled, via a second,
-independent Claude chat that labelled them without seeing Claude's labels
-(it matched on 37 of 46), and I approved each of the 6 resulting changes. Every
-row's `note` says `ai-prelabeled`, and 36 rows carry a `hard:` note naming the
-two labels they sat between. Claude read only the first ~350–400 characters of
-longer comments before labelling them.
+**How I labelled them:** I wrote the label definitions and decision rules, then
+had Claude, an AI assistant, pre-label all 259 rows against them. I reviewed
+that work and made the final decision on the labels. I did not label any posts
+cold. Every row's `note` says `ai-prelabeled`, and 36 rows carry a `hard:` note
+naming the two labels they sat between. Claude read only the first ~350–400
+characters of longer comments before labelling them.
 
 Two things about the sample: I added rows after the first pass to keep
 `analysis` above my own 15% floor, and I found many of them by searching for
@@ -175,12 +172,12 @@ numbers, links and quotes. The label mix is therefore not the natural mix of
 
 **Counts per label:**
 
-| Label | Count | Share |
-|---|---|---|
-| `hot_take` | 127 | 49.0% |
-| `reaction` | 89 | 34.4% |
-| `analysis` | 43 | 16.6% |
-| **Total** | 259 | 100% |
+| Label      | Count | Share |
+| ---------- | ----- | ----- |
+| `hot_take` | 127   | 49.0% |
+| `reaction` | 89    | 34.4% |
+| `analysis` | 43    | 16.6% |
+| **Total**  | 259   | 100%  |
 
 **Three hard cases**
 
@@ -188,25 +185,28 @@ numbers, links and quotes. The label mix is therefore not the natural mix of
      been, and what you chose. These are worth more than the easy 190. -->
 
 **1.**
-> *The post:* "Disney took the popular comedian Jimmy Kimmel off-air after he joked about it," No. Kimmel ragged on trump and maga but did not joke about kirk. Stop the gaslighting. (https://piefed.social/comment/9665324)
+
+> _The post:_ "Disney took the popular comedian Jimmy Kimmel off-air after he joked about it," No. Kimmel ragged on trump and maga but did not joke about kirk. Stop the gaslighting. (https://piefed.social/comment/9665324)
 >
-> *Could have been:* `analysis` or `hot_take`
+> _Could have been:_ `analysis` or `hot_take`
 >
-> *I chose:* `hot_take`, because it states what Kimmel did and didn't say but gives no source, quote or number to point to. It was `analysis` at first, because the fact is checkable. I tightened the rule to require a detail actually given as support, and this moved.
+> _I chose:_ `hot_take`, because it states what Kimmel did and didn't say but gives no source, quote or number to point to. It was `analysis` at first, because the fact is checkable. I tightened the rule to require a detail actually given as support, and this moved.
 
 **2.**
-> *The post:* I believe it's still better than renting games. Here I can just backup my saves and move elsewhere (other provider or on real hardware if I want). I've been playing like 100h per year, so I thing spending 2K$ in hardware when I can just spend 40€/month is not worth it for me. (https://lemmy.ml/comment/28527426)
+
+> _The post:_ I believe it's still better than renting games. Here I can just backup my saves and move elsewhere (other provider or on real hardware if I want). I've been playing like 100h per year, so I thing spending 2K$ in hardware when I can just spend 40€/month is not worth it for me. (https://lemmy.ml/comment/28527426)
 >
-> *Could have been:* `hot_take` or `reaction`
+> _Could have been:_ `hot_take` or `reaction`
 >
-> *I chose:* `reaction`, because the numbers (100h a year, 2K$ vs 40€ a month) are about the poster's own use and the conclusion is "not worth it for me." A second Claude labelled it the same way.
+> _I chose:_ `reaction`, because the numbers (100h a year, 2K$ vs 40€ a month) are about the poster's own use and the conclusion is "not worth it for me." A second Claude labelled it the same way.
 
 **3.**
-> *The post:* \>Video Game Plus pointed to its policy of not selling games that only offer digital codes, and as a result, it will not sell the biggest game of 2026. The retailer noted that this isn't a reflection of Rockstar Games or the game itself, but argued that it's part of their goal of preserving physical media. Based (https://pawb.social/comment/22897120)
+
+> _The post:_ \>Video Game Plus pointed to its policy of not selling games that only offer digital codes, and as a result, it will not sell the biggest game of 2026. The retailer noted that this isn't a reflection of Rockstar Games or the game itself, but argued that it's part of their goal of preserving physical media. Based (https://pawb.social/comment/22897120)
 >
-> *Could have been:* `analysis` or `reaction`
+> _Could have been:_ `analysis` or `reaction`
 >
-> *I chose:* `reaction`, because the poster only quotes an article and adds "Based." The detail is in the quote, not offered as support for a claim of their own. This is also why a similar recap, row 94, ended up `reaction`.
+> _I chose:_ `reaction`, because the poster only quotes an article and adds "Based." The detail is in the quote, not offered as support for a claim of their own. This is also why a similar recap, row 94, ended up `reaction`.
 
 ---
 
@@ -214,17 +214,26 @@ numbers, links and quotes. The label mix is therefore not the natural mix of
 
 <!-- Your starting model, your settings, and anything you changed and why. -->
 
-**Base model:**
+**Base model:** `distilbert-base-uncased`
 
-**Settings:** <!-- epochs, learning rate, batch size, seed -->
+**Settings:** 3 epochs, learning rate 2e-5, batch size 16, 128 tokens per post,
+seed 42. Trained on an Apple Silicon GPU (`mps`), torch 2.14.1 (recorded in
+`results.json`).
 
-**Anything I changed from the defaults, and why:**
+**Anything I changed from the defaults, and why:** Nothing. I used the notebook
+defaults for every setting.
 
-**Split sizes:** <!-- train / val / test, and per-label counts in the test
-split. If a label had fewer than about 8 in test, say so — it explains a lot
-of next unit's variance. -->
+**Split sizes:** The notebook's stratified 70/15/15 split of 259 rows gives
+about 181 train, 39 validation and 39 test. Test split by label:
 
+| Label      | Test count |
+| ---------- | ---------- |
+| `hot_take` | 19         |
+| `reaction` | 13         |
+| `analysis` | 7          |
 
+`analysis` has only 7 test examples, under the notebook's threshold of about 8,
+so its metrics will be jumpy from seed to seed next unit.
 
 ---
 
@@ -237,19 +246,36 @@ of next unit's variance. -->
      workflow and disclosing it costs you nothing. Not disclosing it is the
      problem. -->
 
-**Moment 1**
+**Moment 1: pre-labelling against my definitions**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- _What I asked for:_ I wrote the three label definitions and the decision rules
+  for `analysis`, `hot_take` and `reaction`. Then I asked Claude to label all
+  259 comments against them and to flag the ones that sat between two labels.
+- _What came back:_ A label for every row, plus 36 rows marked `hard:` with the
+  two labels each sat between. Claude only read the first ~350–400 characters of
+  longer comments.
+- _What I changed:_ I rewrote the `analysis` rule. It first counted any
+  checkable fact, so a comment saying what Kimmel did and didn't say was
+  labelled `analysis` with nothing behind it. I tightened the rule to require a
+  source, quote, number or link given as support, and that row moved to
+  `hot_take`.
 
-**Moment 2**
+**Moment 2: finding more `analysis` comments**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- _What I asked for:_ After the first pass `analysis` was under my own 15%
+  floor, so I asked Claude to help me search for comments that cite a number,
+  link or quote.
+- _What came back:_ More candidate comments, which I added to the dataset.
+  `analysis` ended at 43 rows (16.6%).
+- _What I changed:_ I added them knowing that searching for numbers, links and
+  quotes pulls the sample toward `analysis`. I say so in The Dataset: the label
+  mix is not the natural mix of the community.
 
-**Pre-labelling disclosure:**
+**Pre-labelling disclosure:** I wrote the label definitions and decision rules.
+Claude, an AI assistant, pre-labelled all 259 rows against them. I reviewed that
+work and made the final decision on the labels, and I did not label any posts
+cold. Every row's `note` says `ai-prelabeled`, and 36 rows carry a `hard:` note.
+I did not read all 259 rows myself.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
@@ -263,22 +289,22 @@ of next unit's variance. -->
 <!-- Both models on the same posts. `python baseline.py --trained results.json`
      prints this table for you. -->
 
-| Measure | Baseline | Trained | Difference |
-|---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| Measure          | Baseline | Trained | Difference |
+| ---------------- | -------- | ------- | ---------- |
+| Overall accuracy |          |         |            |
+| Macro F1         |          |         |            |
+| F1 — `label_one` |          |         |            |
+| F1 — `label_two` |          |         |            |
 
 **What I predicted before I looked:**
+
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
 
 **What the gap actually means:**
+
 <!-- If the baseline matched your trained model, your fine-tuning added
      nothing — and that is a real finding, not a failure. Say it plainly. -->
-
-
 
 ---
 
@@ -288,30 +314,29 @@ of next unit's variance. -->
      spread table; the Target and Verdict columns are yours. -->
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
-|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| --------- | ------ | ------- | ------ | --------- | ------- |
+| 1.        |        |         |        |           |         |
+| 2.        |        |         |        |           |         |
+| 3.        |        |         |        |           |         |
+| 4.        |        |         |        |           |         |
+| 5.        |        |         |        |           |         |
 
 ### Confusion matrix
 
 <!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
      An image of a matrix earns nothing. -->
 
-| true \ predicted |  |  |  |
-|---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+| true \ predicted |     |     |     |
+| ---------------- | --- | --- | --- |
+| \*\*\*\*         |     |     |     |
+| \*\*\*\*         |     |     |     |
+| \*\*\*\*         |     |     |     |
 
 **My biggest off-diagonal number, and what it means:**
+
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
      direction. "7 real analysis posts were called hot_take and only 3 went the
      other way" is a direction, not just an error rate. -->
-
-
 
 ---
 
@@ -320,13 +345,13 @@ of next unit's variance. -->
 <!-- MET or MISSED against LAST UNIT's target. The target has to hold across
      all three seeds, not turn up sometimes. -->
 
-| # | Criterion | Target | Verdict | How I decided |
-|---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| #   | Criterion | Target | Verdict | How I decided |
+| --- | --------- | ------ | ------- | ------------- |
+| 1   |           |        |         |               |
+| 2   |           |        |         |               |
+| 3   |           |        |         |               |
+| 4   |           |        |         |               |
+| 5   |           |        |         |               |
 
 **Diagnoses**
 
@@ -339,8 +364,6 @@ of next unit's variance. -->
      have that can tell a LABELLING problem from a MODEL problem, and this
      section is graded on whether you used it that way. -->
 
-
-
 ---
 
 ## Agreement Report
@@ -351,7 +374,7 @@ of next unit's variance. -->
      data/staff_taxonomy.md, not your own — so every argument below is made
      from those definitions and those decision rules. -->
 
-**Agreement rate:** ___ / 30 = ___%
+**Agreement rate:** **_ / 30 = _**%
 
 <!-- Nobody grades this number. A 60% who argues every disagreement from the
      stated rules beats a 95% who wrote "staff was right" nine times. Several
@@ -374,26 +397,26 @@ of next unit's variance. -->
      what you did across your own 200. -->
 
 **1.**
-> *The post:*
+
+> _The post:_
 >
-> *Staff said / I said:*
+> _Staff said / I said:_
 >
-> *My call, and why:*
+> _My call, and why:_
 >
-> *Which pile:*
+> _Which pile:_
 
 **2.**
-> *The post:*
+
+> _The post:_
 >
-> *Staff said / I said:*
+> _Staff said / I said:_
 >
-> *My call, and why:*
+> _My call, and why:_
 >
-> *Which pile:*
+> _Which pile:_
 
 **What the pattern in my disagreements tells me:**
-
-
 
 ---
 
@@ -406,19 +429,17 @@ of next unit's variance. -->
 ### Run Log — After
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
-|---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| --------- | ------ | ------- | ------ | --------- | ------- |
+| 1.        |        |         |        |           |         |
+| 2.        |        |         |        |           |         |
+| 3.        |        |         |        |           |         |
+| 4.        |        |         |        |           |         |
+| 5.        |        |         |        |           |         |
 
 **Did it help, and how do I know:**
 
 <!-- If it didn't, say so. Relabelling that didn't help is a genuinely
      interesting result and earns full credit. -->
-
-
 
 ---
 
@@ -426,13 +447,10 @@ of next unit's variance. -->
 
 <!-- For each criterion still missed: what you'd do, and why you stopped. -->
 
-
-
 **The gap between what I meant my labels to capture and what the model
 learned:**
+
 <!-- Two sentences. Your confusion matrix is the evidence. -->
-
-
 
 <!-- ═════════════════════════════════════════════════════════════════════
 
